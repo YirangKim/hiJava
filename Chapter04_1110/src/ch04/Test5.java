@@ -7,7 +7,7 @@ public class Test5 {
 		OUTER : for ( i=0; i <10; i++) // i = 0 1 2 3 4 5 6 7 8 9
 				MIDDLE : for ( j=0; j < 3; j++) // j = 0 1 2 
 					INNER : for ( k=0; k < 4; k++ ) { // k = 0 1 2 3
-						if ( i==4 && j ==2 ) break OUTER;
+						if ( i==4 && j ==2 ) break OUTER; // 멈출 때 i=4, j = 2
 					}
 		System.out.println( i ); // i = 4
 		System.out.println( j ); // j = 2
