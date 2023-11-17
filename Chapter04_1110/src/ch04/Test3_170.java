@@ -1,7 +1,7 @@
 package ch04;
 
 //p170 5번 
-public class Test3 {
+public class Test3_170 {
 
 	public static void main(String[] args) {
 		int i = 2, j = 0;

@@ -1,6 +1,6 @@
 package ch04;
 
-public class Test5 {
+public class Test5_p171 {
 
 	public static void main(String[] args) {
 		int i = 0, j = 0, k = 0;

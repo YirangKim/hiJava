@@ -1,15 +1,17 @@
 package ch05.TestSample;
 
-public class MyClass {
+//p228 7번
+
+public class MyClass_p228 {
 
 	int var;
 			
 	public static void main(String[] args) {
 		
 	     //객체 생성, 초기화
-		 MyClass my = new MyClass();
+		 MyClass_p228 my = new MyClass_p228();
 		 my.var = 1000;
-		 System.out.println("var=" + my.var);
+		 System.out.println("var=" + my.var); // var = 1000
 	}
 
 //	public class Test { // Test사용되지 않음
