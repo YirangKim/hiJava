@@ -19,6 +19,11 @@ public class Phone {
 		System.out.println( phoneNumber + "에서 전화를 걸어 통화를 합니다");
 	}
 	
+	// toString 객체 생성 자료형 출력하면 따라감
+	public String toString() {
+		return "반환값 [" + phoneNumber + "] 는 저의 폰 번호입니다.";
+	}
+	
 
 }
 
