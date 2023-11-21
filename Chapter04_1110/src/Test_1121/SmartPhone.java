@@ -1,4 +1,4 @@
-package ch04;
+package Test_1121;
 
 public class SmartPhone extends Phone {
 	
@@ -7,6 +7,7 @@ public class SmartPhone extends Phone {
 	
 	SmartPhone(String color){
 		// Todo 생성자 이용하여 데이터 입력
+		// 부모 상속 super
 		super(color);
 	}
 	
