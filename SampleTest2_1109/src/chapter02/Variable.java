@@ -18,7 +18,7 @@ public class Variable {
 		int c1;
 		float d1;
 
-		int a, n1, n2, a1, c1;
+		// int a, n1, n2, a1, c1;
 
 	}
 

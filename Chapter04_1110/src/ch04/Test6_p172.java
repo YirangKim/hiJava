@@ -8,10 +8,12 @@ public class Test6_p172 {
 		System.out.print("#");
 		System.out.println();
 		}
+
 	}
 }
 
-// i가 j보다 클때 참
+	/*
+ i가 j보다 클때 참
 
   j <= i
 
@@ -22,4 +24,5 @@ public class Test6_p172 {
 # 1
 # 2
   3 <= 2
+ */
 
