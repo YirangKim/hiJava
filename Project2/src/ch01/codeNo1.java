@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class codeNo1 {
-	
+
 	Connection con = null;
 	Statement stmt = null; // 데이터베이스 상호작용
 	int Bookid = 0; 
@@ -46,39 +46,39 @@ public class codeNo1 {
 		}
 	}
 	*/
-	
+
 	//삽입 완료
 	void insertData() {
 		try {
 			Scanner insert = new Scanner(System.in);
 			System.out.println("====도서 정보 등록====" );
-			
+
 	        System.out.println("ID 입력 : " );
 	        int Bookid = insert.nextInt();			
-	        
+
 	        insert.nextLine();
-	        
+
 			System.out.println("도서명 입력 : " );
 	        String Bname = insert.nextLine();
 
 	        System.out.println("저자명 입력 : ");
 	        String Author = insert.nextLine();
-	        
+
 	        System.out.println("카테고리 입력 : ");
 	        String Category = insert.nextLine();
-	        
+
 	        System.out.println("출판사 입력 : ");
 	        String Publisher = insert.nextLine();
-	        
+
 	        System.out.println("발행일 입력 : ");
 	        int Dates = insert.nextInt();
-	        
+
 	        System.out.println("가격 입력 : ");
 	        int Price = insert.nextInt();
-	        
+
 	        String insertStr = "INSERT INTO "+"codeNo1"+ " VALUES("+Bookid+",'" + Bname +"','"+Author+"','"+Category+"','"+Publisher+"','"+Dates+"',"+Price+")" ;
 	        stmt.executeUpdate(insertStr);
-			
+
 			System.out.println("도서 정보 등록이 완료되었습니다.");
 		} catch(Exception e) {
 			System.out.println("도서 정보 등록에 실패하였습니다. ");
@@ -88,7 +88,7 @@ public class codeNo1 {
 
 	//삭제 완료
 	void removeData() {
-		
+
 		Scanner sc = new Scanner(System.in);
 		System.out.println("<< 메뉴를 선택하세요 >>");
 		System.out.println("1.   테이블 행  전체 삭제"); // case 1
@@ -98,10 +98,10 @@ public class codeNo1 {
 		case 1:
 			try {
 				Scanner delete = new Scanner(System.in);
-				
+
 				System.out.print("전체 행 삭제 테이블 이름을 입력하세요" );
 		        String tableName = delete.nextLine();
-				
+
 				String removeStr = "drop FROM"  + tableName +  "";
 		        stmt.executeUpdate(removeStr);
 				System.out.println(	"전체 행 삭제 성공!");
@@ -109,15 +109,15 @@ public class codeNo1 {
 				System.out.println("전체 행 삭제 실패 이유  "+ e.toString());
 			}
 		case 2:
-				
+
 		try {
 			Scanner delete = new Scanner(System.in);
 			System.out.print("일부 행 삭제 테이블 이름을 입력하세요" );
 			String tableName = delete.nextLine();
-			
+
 			System.out.print("삭제할 bookid 번호를 입력하세요" );
 	        String bookid = delete.nextLine();
-			
+
 			String removeStr = "DELETE FROM"  + tableName +  "WHERE  bookid="+ bookid +"";
 	        stmt.executeUpdate(removeStr);
 			System.out.println("일부 행 삭제 성공!");
@@ -126,60 +126,142 @@ public class codeNo1 {
 		}
 	  }
 	}
-	
-	
+
+
 
 	//수정 완료
 	void changeData() {
-		try {
-			
-			System.out.println("=== 도서 추가, 수정 ===");
+	    Scanner change = new Scanner(System.in);
+
+	    System.out.println("====== 도서 정보 수정 ======");
+	   
+			System.out.print("수정할 도서의 번호를 입력하세요> ");
+		  int bookID = change.nextInt();
+	    change.nextLine();
+
+		  System.out.println("==== 부분 수정할 정보 번호를 입력 하세요 ====");
+			System.out.println("1. 도서명 ");
+			System.out.println("2. 저자 ");
+			System.out.println("3. 카테고리 ");
+			System.out.println("4. 출판사 ");
+			System.out.println("5. 발행년 ");
+			System.out.println("6. 가격 ");
+			int num = change.nextInt();
+
+      try { 
 					
-			Scanner change = new Scanner(System.in);
-			
-			System.out.println("수정할 도서의 Bookid 입력: ");
-			int bookID = change.nextInt();
-			change.nextLine();
-			
-			System.out.print("도서명 :" );
-			String bname = change.nextLine();
-			
-			System.out.print("작가 :" );
-			String author = change.nextLine();
-			
-			System.out.print("카테고리 : ");
-	        String category = change.nextLine();
+					switch(num) {
 
-	        System.out.print("출판사 : ");
-	        String publisher = change.nextLine();
+						case 1:
+	                        try {
+	                            System.out.print("수정할 도서의 제목을 입력하세요 :");
+	                            change.nextLine(); 
+	                            String bname = change.nextLine();
 
-	        System.out.print("출판일 : ");
-	        String dates = change.nextLine();
+	                            String changeStr = "UPDATE codeno1 SET Bname= '" + bname + "' WHERE Bookid=" + bookID;
 
-	        System.out.print("가격 : ");
-		    int price = change.nextInt();
+	                            stmt.executeUpdate(changeStr);
+	                            System.out.println("데이터 변경 성공!");
+	                        } catch (Exception e) {
+	                            System.out.println(e.toString());
+	                        }
+	                        break;
+
+	                    case 2:
+	                        try {
+	                            System.out.print("수정할 저자명을 입력하세요 :");
+	                            change.nextLine(); 
+	                            String author = change.nextLine();
+
+	                            String changeStr = "UPDATE codeno1 SET Author= '" + author + "' WHERE Bookid=" + bookID;
+
+	                            stmt.executeUpdate(changeStr);
+	                            System.out.println("데이터 변경 성공!");
+	                        } catch (Exception e) {
+	                            System.out.println(e.toString());
+	                        }
+	                        break;
+
+	                    case 3:
+	                        try {
+	                            System.out.print("수정할 카테고리를 입력하세요 :");
+	                            change.nextLine(); 
+	                            String category = change.nextLine();
+
+	                            String changeStr = "UPDATE codeno1 SET Category = '" + category + "' WHERE Bookid="
+	                                    + bookID;
+
+	                            stmt.executeUpdate(changeStr);
+	                            System.out.println("데이터 변경 성공!");
+	                        } catch (Exception e) {
+	                            System.out.println(e.toString());
+	                        }
+	                        break;
+
+	                    case 4:
+	                        try {
+	                            System.out.print("수정할 출판사명 입력하세요 :");
+	                            change.nextLine(); 
+	                            String publisher = change.nextLine();
+
+	                            String changeStr = "UPDATE codeno1 SET Publisher= '" + publisher + "' WHERE Bookid="
+	                                    + bookID;
+
+	                            stmt.executeUpdate(changeStr);
+	                            System.out.println("데이터 변경 성공!");
+	                        } catch (Exception e) {
+	                            System.out.println(e.toString());
+	                        }
+	                        break;
+
+	                    case 5:
+	                        try {
+	                            System.out.print("수정할 발행년을 입력하세요:");
+	                            change.nextInt(); 
+	                            int dates = change.nextInt();
+
+	                            String changeStr = "UPDATE codeno1 SET Dates = " + dates + " WHERE Bookid=" + bookID;
+
+	                            stmt.executeUpdate(changeStr);
+	                            System.out.println("데이터 변경 성공!");
+	                        } catch (Exception e) {
+	                            System.out.println(e.toString());
+	                        }
+	                        break;
+		
+	                    case 6:
+	                        try {
+	                            System.out.print("수정할 가격을 입력하세요:");
+	                            change.nextInt(); 
+	                            int price = change.nextInt();
+
+	                            String changeStr = "UPDATE codeno1 SET Price  = " + price + " WHERE Bookid=" + bookID;
+
+	                            stmt.executeUpdate(changeStr);
+	                            System.out.println("데이터 변경 성공!");
+	                        } catch (Exception e) {
+	                            System.out.println(e.toString());
+	                        }
+	                        break;
+
+
+					}
 						
-						
-	        String changeStr = "UPDATE table_name SET Bname='" + bname + "', Author='" + author + "', Category='" + category
-	                + "', Publisher='" + publisher + "', Dates='" + dates +
-	                "', Price=" + price + " WHERE Bookid=" + bookId;
-					stmt.executeUpdate(changeStr);
-					
-			System.out.println("데이터 변경 성공!");
-		} catch(Exception e) {
-			System.out.println("데이터 변경 실패 이유 : " + e.toString()); 
-		}
+		
+			} catch (Exception e) {
+	                System.out.println(e.toString());
+	            }
 	}
-
+	
 	//조회 완료 
 	void viewData() {
 		try {
 			Scanner view = new Scanner(System.in);
 			System.out.print("데이터를 추가할 테이블 이름을 입력하세요 >>");
 			String tableName = view.nextLine();
-			
+
 			System.out.println("== user 테이블 조회 ==");
-			
+
 			String viewStr1 = "SELECT * FROM " + tableName;
 			ResultSet result1 = stmt.executeQuery(viewStr1); //Query
 
@@ -187,12 +269,12 @@ public class codeNo1 {
 				System.out.print(result1.getString("name") + "\t" + result1.getString("id")
 								 + "\t" + result1.getString("password") + "\n");
 			}
-			
+
 			System.out.println("");
 			System.out.println("데이터 조회 성공!");
 		} catch(Exception e) {
 			System.out.println("데이터 조회 실패 이유 : " + e.toString());
 				}
-	
+
 		}
 }

@@ -23,7 +23,8 @@ public class Database {
 			tableName = s.nextLine();
 			
 			 // 열 정의에 NOW() 포함
-	        String createStr = "CREATE TABLE " + tableName + "(name varchar(10) not null, id varchar(20) not null,"
+	        String createStr = "CREATE TABLE " + tableName + 
+	        		"(name varchar(10) not null, id varchar(20) not null,"
 	        		+ "password varchar(20) not null, "
 	        		+ "date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
 	        		+ " PRIMARY KEY (id))";
@@ -52,7 +53,8 @@ public class Database {
 	        System.out.print("비밀번호 입력: ");
 	        String passwd = insert.nextLine();
 	        
-	        String insertStr = "INSERT INTO " + insertTableName + " VALUES('" + name + "', '" + id + "', '" + passwd + "', NOW())";
+	        String insertStr = "INSERT INTO " + insertTableName +
+	        					" VALUES('" + name + "', '" + id + "', '" + passwd + "', NOW())";
 	        stmt.executeUpdate(insertStr);
 			
 			System.out.println("데이터 추가 성공!");
