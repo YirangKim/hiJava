@@ -8,15 +8,16 @@ public class DatabaseMain extends Database {
 		
 	public static void main(String[] args) {
 		
-		DatabaseMain db = new DatabaseMain(); //객체 생성
+		Database db = new Database(); //객체 생성
 		// System.out.println("db는" + db);
 	    
 		/* 데이터베이스 관련 코드는 try-catch문으로 예외 처리를 꼭 해주어야 한다. */
 		try { //데이터베이스 연결
 			Class.forName("com.mysql.cj.jdbc.Driver"); //드라이버 로드 성공
 			db.con = DriverManager.getConnection(db.url, db.user, db.passwd); //데이터베이스 접속
+			System.out.println("db.con는 " + db.con.toString());
 			System.out.println("데이터베이스 연결 성공");
-			db.stmt = db.con.createStatement(); //객체생성 db.stmt에 저장
+			db.stmt = db.con.createStatement(); // createStatement mysql에 명령어를 보내는 메소드			
 			
 			while(true) {
 			//메뉴 리스트

@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ViewData {
 	codeDriver cd = new codeDriver();
 	
-	void viewData() { 									//조회
+	void viewData() { //조회
     	Scanner insert = new Scanner(System.in);
     	System.out.println("1번 [전체 검색] | 2번 [이름으로 검색] | 3번 [카테고리별 검색]");
     	System.out.print("번호를 골라주세요! : ");
@@ -24,7 +24,6 @@ public class ViewData {
 				 System.out.print("| 번호 : " + result1.getString("Bookid") + "\t| " + "제목 : " + result1.getString("Bname")+"\t| 저자 : "+result1.getString("Author")+"\t | 카테고리 : "+result1.getString("Category")+"\t | 발행일 : " +result1.getString("dates") + "\t | 가격 : "+result1.getString("Price") +"\t | 대여날자 : "+result1.getString("대여날짜")+"\t | 반납날자 : "+result1.getString("반납날짜")+"\n"); }
 			 System.out.println("===================================================================================================================================================");
 		            System.out.println();
-			System.out.println("");
 			System.out.println("도서 목록을 불러왔습니다!");
 		} catch(Exception e) {	
 			System.out.println("데이터 조회 실패 이유 : " + e.toString());
@@ -41,7 +40,7 @@ public class ViewData {
 		    String keyword = s.nextLine();
 		    System.out.println("==================================================================== codeno1 도서목록 조회 =================================================================");
 			System.out.println("========================================================================================================================================================");
-		    String viewStr1 = "SELECT * FROM codeno1 WHERE Bname LIKE '%" + keyword + "%'";
+		    String viewStr1 = "SELECT * FROM codeno1 WHERE Bname LIKE '%" + keyword + "%'"; //% 관련된 것
 		    ResultSet result1 = cd.stmt.executeQuery(viewStr1);
 		    while (result1.next()) {
 		    	System.out.print("| 번호 : " + result1.getString("Bookid") + "\t| " + "제목 : " + result1.getString("Bname")+"\t | 저자 : "+result1.getString("Author")+"\t | 카테고리 : "+result1.getString("Category")+"\t | 발행일 : " +result1.getString("dates") + "\t | 가격 : "+result1.getString("Price") +"\t | 대여날자 : "+result1.getString("대여날짜")+"\t | 반납날자 : "+result1.getString("반납날짜")+"\n");
@@ -60,7 +59,7 @@ public class ViewData {
 				Scanner s = new Scanner(System.in);
 			    System.out.print("검색하고 싶은 카테고리를 고르세요.");
 			    System.out.println();
-			    System.out.println("1번 : 인문학 2번 : 소설 ");
+			    System.out.println("1번 : 인문학 2번 : 소설 "); // 경제 인문학 아동도서 철학 IT
 			    int ka = s.nextInt();
 				System.out.println("==================================================== codeno1 도서목록 조회 ===============================================================================");
 				System.out.println("======================================================================================================================================================");

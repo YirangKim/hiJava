@@ -39,7 +39,7 @@ public class InsertData{
 	                    System.out.print("출판사 입력\t: ");
 	                    String Publisher = insert1.nextLine();
 	                    
-	                    System.out.print("발행년도 입력 : ");
+	                    System.out.print("발행일 입력 : ");
 	                    String Dates = insert1.nextLine();
 	                    
 	                    System.out.print("가격 입력\t: ");
@@ -48,7 +48,7 @@ public class InsertData{
 	                    insert1.nextLine();
 	                    
 	                    System.out.println("도서번호\t: "+Bookid+"\n도서명\t: " +Bname+"\n저자\t: "+Author+"\n카테고리\t: "+ Category +
-	                          "\n출판사\t: "+ Publisher +"\n발행년도\t: "+Dates+"\n가격\t: "+Price   );
+	                          "\n출판사\t: "+ Publisher +"\n발행일\t: "+Dates+"\n가격\t: "+Price   );
 	                    System.out.print("입력한 정보를 등록하겠습니까? y/n : ");
 	                    String a1 = insert1.nextLine();
 	                 
