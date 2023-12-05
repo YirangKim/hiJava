@@ -16,8 +16,8 @@ public class DeleteView {
             System.out.println("5번   카테고리검색   \t전체 삭제"); // case 5
             System.out.println("6번   출판사검색      \t전체 삭제"); // case 6
             System.out.println("7번   출판일검색      \t전체 삭제"); // case 7
-            System.out.println("8번   가격검색         \t전체 삭제");// case 8
-            System.out.println("9번   누락데이터 목록\t전체 삭제");// case 9
+            System.out.println("8번   가격검색         \t전체 삭제"); // case 8
+            System.out.println("9번   누락데이터 목록\t전체 삭제"); // case 9
             System.out.print("번호를 입력해주세요 : ");
             int menu = sc.nextInt();
             
@@ -58,35 +58,30 @@ public class DeleteView {
             case 2:
                  try {
                      Scanner delete = new Scanner(System.in);
-
                      System.out.print("일부 행 삭제할 테이블 이름을 입력하세요 : ");
                      String tableName = delete.nextLine();
 
                      // 이미 존재하는 bookid 목록을 가져오기
                      String existingBookidsQuery = "SELECT bookid FROM " + tableName;
                      ResultSet existingBookidsResult = cd.stmt.executeQuery(existingBookidsQuery);
-
                      // 이미 존재하는 bookid를 저장할 Set
                      Set<Integer> existingBookids = new HashSet<>();
                      while (existingBookidsResult.next()) {
                          existingBookids.add(existingBookidsResult.getInt("bookid"));
                      }
-
                      // 삭제 가능한 bookid 목록을 출력
                      System.out.println("===삭제 가능한 BOOKID 번호===");
                      int count = 0;
                      for (int existingBookId : existingBookids) {
                          System.out.print(existingBookId + "번 | ");
                          count++;
-
                          // 한 행에 10개 출력 후 개행
                          if (count % 10 == 0) {
                              System.out.println();
-                         }
+                     }
                      }
                      System.out.println();
                      System.out.println();  // 마지막 줄바꿈
-
                      System.out.print("삭제할 BOOKID 번호를 입력하세요 : ");
                      int targetBookid = delete.nextInt();
                      delete.nextLine();
@@ -378,28 +373,29 @@ public class DeleteView {
                      String tableName = delete.nextLine();
 
                   // 이미 존재하는 가격 목록을 가져오기
-                     String viewStr1 = "SELECT * FROM codeno1 where Bname is null or Author is null or Category is null or Publisher is null or Dates is null";
+                     String viewStr1 = "SELECT * FROM codeno1 where Bname is null or Author is null or Category is null or Publisher is null or Dates is null or Bname='' or Author ='' or Category='' or Publisher='' or Dates='' ";
                   ResultSet result1 = cd.stmt.executeQuery(viewStr1);
                   System.out.println("==================================================================누락데이터 목록==============================================================================================");
-                  System.out.println("===========================================================================================================================================================================");
+                  System.out.println("========================================================================================================================================================================");
                    while (result1.next()) {
-                      System.out.print("| 번호 : " + result1.getString("Bookid") + "번\t| " + "제목 : " + result1.getString("Bname")+"\t| 저자 : "+result1.getString("Author")+"\t | 카테고리 : "+result1.getString("Category")+"\t | 출판사 : "+result1.getString("Publisher")+"\t | 발행일 : " +result1.getString("dates") + "\t | 가격 : "+result1.getString("Price") +"원\t | 대여날자 : "+result1.getString("대여날짜")+"\t | 반납날자 : "+result1.getString("반납날짜")+"\n"); }
+                      System.out.print("| 번호 : " + result1.getString("Bookid") + "번\t| " + "제목 : " + result1.getString("Bname")+"\t| 저자 : "+result1.getString("Author")
+                                                        +"\t | 카테고리 : "+result1.getString("Category")+"\t | 출판사 : "+result1.getString("Publisher")+"\t | 발행일 : " +result1.getString("dates") 
+                                                        + "\t | 가격 : "+result1.getString("Price") +"원\t | 대여날자 : "+result1.getString("대여날짜")+"\t | 반납날자 : "+result1.getString("반납날짜")+"\n"); }
                    System.out.println("===========================================================================================================================================================================");
                                     
-                     String removeStr = "DELETE FROM " + tableName + " WHERE Bname is null or Author is null or Category is null or Publisher is null or Dates is null";
+                     String removeStr = "DELETE FROM " + tableName + " WHERE Bname is null or Author is null or Category is null or Publisher is null or Dates is null or Bname='' or Author ='' or Category='' or Publisher='' or Dates=''  ";
                      cd.stmt.executeUpdate(removeStr);
                      
-                     System.out.println("누락데이터 목록을 전체 삭제합니다.");
+                     System.out.println("누락데이터 목록을 전체 삭제 성공.");
                      System.out.println();
 
                      
                } catch (Exception e) {
                     System.out.println("삭제 가능한 가격 목록 확인 중 에러 발생: " + e.toString());
-                     System.out.println("가격검색 전체 삭제 실패 이유   " + e.toString());
+                     System.out.println("누락데이터 목록 전체 삭제 실패 이유   " + e.toString());
                  }
                  break;
                
             }
-              }
-
-}
+            }
+          }

@@ -14,15 +14,16 @@ public class code1Select{
 		BookRent bv = new BookRent();
 		UpdateView chage = new UpdateView();
 		DeleteView dv = new DeleteView();
+
+
 		/* 데이터베이스 관련 코드는 try-catch문으로 예외 처리를 꼭 해주어야 한다. */
 		try {
 			//데이터베이스 연결
+			cd.login(); // id root, pw 1234
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			cd.con = DriverManager.getConnection(cd.url, cd.user, cd.passwd);
-			cd.stmt = cd.con.createStatement();
 			while(i) {
 			//메뉴 리스트
-				 System.out.println("=== 도서 관리 프로그램 ===");
+				 System.out.println("======= 도서 관리 프로그램 =======");
 		         System.out.println("1번 [도서 추가]");
 		         System.out.println("2번 [도서 정보 수정]");
 		         System.out.println("3번 [도서 삭제]");
@@ -41,18 +42,18 @@ public class code1Select{
 					cs.insertData();	//도서 추가
 					break;
 				case 2 :
-					chage.changeData();	//도서 수정
+					chage.changeData();	//도서 삭제
 					break;
 				case 3 :
-					dv.removeData();	//도서 삭제
+					dv.removeData();	//도서 수정
 					break;
 				case 4 :
 					vd.viewData();		//도서 이름으로 검색데이터 조회
 						break;
-				case 5 :  // 대여
+				case 5 : 
 					bv.dates();
 					break;
-				case 6 : //종료
+				case 6 :
 					System.out.println("도서관리 프로그램을 종료합니다.");
 					i= false;
 					break;
